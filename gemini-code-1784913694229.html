@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ms Lê Hằng English - IELTS Reading Mock Test</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-pink: #ff85a1;
+      --primary-pink-dark: #f75c82;
+      --bg-pastel-pink: #fff0f5;
+      --accent-yellow: #fdcb6e;
+      --accent-green: #00d26a;
+      --accent-red: #ff4757;
+      --card-bg: #ffffff;
+      --text-color: #2d3436;
+      --border-radius: 18px;
+      --shadow-3d: 0 8px 0 rgba(0,0,0,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      user-select: text;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-pastel-pink);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(253, 203, 110, 0.3) 0%, transparent 20%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='10' y='30' font-size='22'%3E🍫%3C/text%3E%3Ctext x='70' y='80' font-size='22'%3E🌱%3C/text%3E%3Ctext x='20' y='90' font-size='20'%3E✨%3C/text%3E%3Ctext x='80' y='30' font-size='20'%3E☕%3C/text%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: auto, auto, 140px 140px;
+      animation: gradientMove 15s ease infinite alternate;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 0%, 0% 0%, 0 0; }
+      100% { background-position: 100% 100%, -100% -100%, 70px 70px; }
+    }
+
+    /* TOP BAR */
+    header.top-bar {
+      height: 65px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(255, 133, 161, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary-pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .brand-title span {
+      background: linear-gradient(135deg, #f75c82, #a29bfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.1rem;
+    }
+
+    .timer-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-pastel-pink);
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 2px solid var(--primary-pink);
+    }
+
+    .timer-display {
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--primary-pink-dark);
+      min-width: 65px;
+    }
+
+    .timer-btn {
+      background: var(--primary-pink);
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--primary-pink-dark);
+      transition: all 0.1s ease;
+    }
+
+    .timer-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--primary-pink-dark);
+    }
+
+    .progress-bar-container {
+      width: 220px;
+      background: #e0e0e0;
+      height: 16px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #ccc;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-green));
+      transition: width 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #333;
+    }
+
+    /* MAIN CONTENT SPLIT SCREEN */
+    .app-container {
+      display: flex;
+      height: calc(100vh - 65px);
+      width: 100%;
+    }
+
+    .pane {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 25px;
+      scroll-behavior: smooth;
+    }
+
+    .left-pane {
+      background: rgba(255, 255, 255, 0.85);
+      border-right: 4px solid var(--primary-pink);
+      backdrop-filter: blur(5px);
+    }
+
+    .right-pane {
+      background: rgba(255, 240, 245, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    /* TAB SYSTEM */
+    .tabs-header {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: white;
+      border: 2px solid var(--primary-pink);
+      font-weight: 800;
+      color: var(--primary-pink-dark);
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--primary-pink);
+    }
+
+    .tab-btn.active {
+      background: var(--primary-pink);
+      color: white;
+    }
+
+    /* CARD STYLE */
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      border: 3px solid #f1f2f6;
+    }
+
+    .passage-paragraph {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .paragraph-tag {
+      display: inline-block;
+      background: var(--primary-pink);
+      color: white;
+      font-weight: 900;
+      padding: 2px 10px;
+      border-radius: 8px;
+      margin-right: 8px;
+    }
+
+    /* HIGHLIGHT EFFECT */
+    .highlight-yellow {
+      background-color: #fff3a0;
+      border-radius: 3px;
+      padding: 0 3px;
+    }
+
+    /* TRANSLATION BUTTON & BOX */
+    .trans-toggle-btn {
+      background: #fff0f5;
+      color: var(--primary-pink-dark);
+      border: 2px dashed var(--primary-pink);
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      margin-top: 6px;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .trans-toggle-btn:hover {
+      background: var(--primary-pink);
+      color: white;
+    }
+
+    .trans-box {
+      display: none;
+      background: #f8f9fa;
+      border-left: 4px solid var(--accent-yellow);
+      padding: 12px 15px;
+      margin-top: 10px;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* QUESTIONS STYLING */
+    .question-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      background: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #cbd5e1;
+      transition: transform 0.1s, background-color 0.2s;
+    }
+
+    .option-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-pink);
+    }
+
+    .option-btn.correct {
+      background-color: var(--accent-green) !important;
+      color: white !important;
+      border-color: #00b894 !important;
+      box-shadow: 0 4px 0 #00b894 !important;
+    }
+
+    .option-btn.wrong {
+      background-color: var(--accent-red) !important;
+      color: white !important;
+      border-color: #d63031 !important;
+      box-shadow: 0 4px 0 #d63031 !important;
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    /* SELECT DROPDOWN / MATCHING */
+    .custom-select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-pink);
+      font-size: 1rem;
+      font-weight: 700;
+      background: white;
+      color: var(--text-color);
+      box-shadow: 0 4px 0 var(--primary-pink);
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    /* FILL IN BLANK INPUT */
+    .fill-input {
+      border: 2px solid var(--primary-pink);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      outline: none;
+      width: 160px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .check-btn {
+      background: var(--accent-yellow);
+      color: #333;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #e1b12c;
+      margin-left: 8px;
+    }
+
+    .check-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #e1b12c;
+    }
+
+    /* EXPLANATION BOX */
+    .explanation-box {
+      display: none;
+      background: #eef9f5;
+      border: 2px solid var(--accent-green);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 15px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .exp-item {
+      margin-bottom: 8px;
+    }
+
+    .exp-item strong {
+      color: var(--primary-pink-dark);
+    }
+
+    .locate-btn {
+      background: #a29bfe;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 3px 0 #6c5ce7;
+    }
+
+    .locate-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #6c5ce7;
+    }
+
+    /* VOCABULARY TABLE */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .vocab-table th {
+      background: var(--primary-pink);
+      color: white;
+      text-align: left;
+      padding: 10px;
+      font-weight: 800;
+    }
+
+    .vocab-table td {
+      padding: 10px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+
+    .vocab-table tr:hover {
+      background-color: #fff0f5;
+    }
+
+    /* SUBMIT & MODAL RESULT */
+    .submit-container {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--accent-green), #00b894);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 900;
+      padding: 14px 40px;
+      border-radius: 30px;
+      border: none;
+      box-shadow: 0 8px 0 #008f68;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .submit-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 #008f68;
+    }
+
+    /* RESULT MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-card {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 25px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      border: 5px solid var(--primary-pink);
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-score {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--primary-pink-dark);
+      margin: 15px 0;
+    }
+
+    .close-modal-btn {
+      background: var(--primary-pink);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--primary-pink-dark);
+    }
+
+    /* HIGHLIGHTED TARGET SENTENCE */
+    .sentence-target {
+      background-color: #ffeaa7;
+      transition: background-color 0.5s;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CONTROL BAR -->
+  <header class="top-bar">
+    <div>
+      <h1 class="brand-title">Ms Lê Hằng English | <span>IELTS READING MOCK TEST</span></h1>
+    </div>
+
+    <div class="timer-container">
+      <span class="timer-display" id="timer">20:00</span>
+      <button class="timer-btn" id="startTimerBtn" onclick="toggleTimer()">BẮT ĐẦU</button>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progressFill"></div>
+      <div class="progress-text" id="progressText">0 / 14 Đã làm</div>
+    </div>
+  </header>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+    
+    <!-- LEFT PANE: READING PASSAGE -->
+    <div class="pane left-pane" id="leftPane">
+      
+      <div class="tabs-header">
+        <button class="tab-btn" style="opacity: 0.5; cursor: not-allowed;">Passage 1</button>
+        <button class="tab-btn" style="opacity: 0.5; cursor: not-allowed;">Passage 2</button>
+        <button class="tab-btn active">Passage 3</button>
+      </div>
+
+      <div class="card">
+        <h2 style="color: var(--primary-pink-dark); margin-top: 0; font-size: 1.6rem;">
+          PASSAGE 3: The History of Chocolate 🍫
+        </h2>
+        <p style="font-size: 0.88rem; color: #666; background: #fff0f5; padding: 8px 12px; border-radius: 8px;">
+          💡 <strong>Mẹo học sinh:</strong> Bôi đen bất kỳ từ vựng nào trên bài đọc để tự động Highlight màu vàng Pastel!
+        </p>
+
+        <!-- PARAGRAPH A -->
+        <div class="passage-paragraph" id="para-A">
+          <span class="paragraph-tag">A</span>
+          <span id="sent-A-1">Chocolate is now perceived as a ubiquitous indulgence, whether consumed as confectionery or a beverage, readily accessible in global markets.</span>
+          <span id="sent-A-2">However, it may come as a surprise that chocolate was once regarded as a commodity of extraordinary value.</span>
+          <span id="sent-A-3">The discovery of the cocoa tree, the source of chocolate, occurred approximately 2,000 years ago in the lush tropical rain forests of the Americas.</span>
+          <span id="sent-A-4">The evolution of the chocolate — from a regionally significant Mesoamerican drink to globally consumed confectionery — has been shaped through cross-continental cultural exchanges and the successive influences of multiple civilisations.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-A')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-A">
+              Ngày nay, socola được coi là một món ăn ưa thích phổ biến, dù được tiêu thụ dưới dạng kẹo hay đồ uống, và có thể dễ dàng tiếp cận ở các thị trường toàn cầu. Tuy nhiên, có thể bạn sẽ ngạc nhiên khi biết rằng socola từng được xem là một hàng hóa có giá trị phi thường. Việc phát hiện ra cây ca cao, nguồn gốc của socola, đã diễn ra khoảng 2.000 năm trước trong những khu rừng mưa nhiệt đới tươi tốt của châu Mỹ. Sự phát triển của socola — từ một thức uống có ý nghĩa khu vực ở Trung Mỹ trở thành món kẹo được tiêu thụ trên toàn cầu — đã được hình thành thông qua các cuộc trao đổi văn hóa xuyên lục địa và sự ảnh hưởng nối tiếp của nhiều văn minh.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH B -->
+        <div class="passage-paragraph" id="para-B">
+          <span class="paragraph-tag">B</span>
+          <span id="sent-B-1">Historians suggest that the ancient Maya pioneered cocoa tree cultivation in Mesoamerica, with evidence dating back approximately 2,000 years.</span>
+          <span id="sent-B-2">They transplanted cocoa trees from the dense rain forest into their domesticated gardens, where cocoa beans were initially roasted and ground into a smooth paste.</span>
+          <span id="sent-B-3">The paste was combined with spices and water to produce unsweetened chocolate beverages.</span>
+          <span id="sent-B-4">The Maya also employed a distinctive technique of transferring the liquid back and forth between containers, generating a foamy layer on the drink's surface.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-B')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-B">
+              Các nhà sử học cho rằng người Maya cổ đại là những người đi đầu trong việc trồng cây ca cao ở Trung Mỹ, với bằng chứng có từ khoảng 2.000 năm trước. Họ đã di chuyển các cây ca cao từ rừng mưa rậm rạp vào các khu vườn thuần hóa của mình, nơi hạt ca cao ban đầu được rang và xay thành một hỗn hợp mịn. Hỗ trợ này được kết hợp với gia vị và nước để tạo ra đồ uống socola không đường. Người Maya cũng sử dụng một kỹ thuật đặc biệt là rót chất lỏng qua lại giữa các bình chứa, tạo ra một lớp bọt trên bề mặt đồ uống.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH C -->
+        <div class="passage-paragraph" id="para-C">
+          <span class="paragraph-tag">C</span>
+          <span id="sent-C-1">Cocoa and chocolate were integral to Maya culture, commonly depicted in their architectural structures and artistic works.</span>
+          <span id="sent-C-2">While the aristocracy, particularly the royal families, consumed chocolate during elaborate ceremonies, even less privileged groups leaves savoured the drink.</span>
+          <span id="sent-C-3">Furthermore, cocoa beans served as a powerful emblem of marital union and were ritually exchanged during wedding ceremonies.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-C')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-C">
+              Ca cao và socola là một phần không thể thiếu trong văn hóa Maya, thường được thể hiện trong các công trình kiến trúc và tác phẩm nghệ thuật của họ. Trong khi tầng lớp quý tộc, đặc biệt là các gia đình hoàng gia, thưởng thức socola trong các nghi lễ cầu kỳ, thì ngay cả những nhóm ít đặc quyền hơn cũng thỉnh thoảng thưởng thức thức uống này. Hơn nữa, hạt ca cao còn đóng vai trò là biểu tượng mạnh mẽ của sự đoàn tụ hôn nhân và được trao đổi theo nghi thức trong các lễ cưới.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH D -->
+        <div class="passage-paragraph" id="para-D">
+          <span class="paragraph-tag">D</span>
+          <span id="sent-D-1">The Aztec civilisation in Mexico regarded chocolate as a prestigious commodity, despite being geographically unable to cultivate cocoa trees within their heartland.</span>
+          <span id="sent-D-2">Accordingly, they sourced cocoa beans through extensive trade networks, even utilising them as currency for tax payments.</span>
+          <span id="sent-D-3">Chocolate held an exclusive function within Aztec imperial and religious ceremonies, where priests offered cocoa beans as divine offerings and prepared sacred chocolate drinks.</span>
+          <span id="sent-D-4">Due to the scarcity of cocoa beans, consumption remained restricted to the societal elite, with historical accounts suggesting Emperor Montezuma consumed up to 50 cups daily.</span>
+          <span id="sent-D-5">Linguists trace the term 'chocolate' to the Aztec Nahuatl word xocolatl, meaning 'bitter water' in the Nahuatl language, though some scholars argue that it has hybrid origins combining Maya and Nahuatl linguistic elements.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-D')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-D">
+              Nền văn minh Aztec ở Mexico coi socola là một hàng hóa danh giá, mặc dù về mặt địa lý họ không thể trồng cây ca cao trong vùng đất trung tâm của mình. Do đó, họ tìm kiếm hạt ca cao thông qua các mạng lưới thương mại rộng lớn, thậm chí sử dụng chúng làm tiền tệ để nộp thuế. Socola nắm giữ một chức năng độc quyền trong các nghi lễ hoàng gia và tôn giáo của người Aztec, nơi các tư tế dâng hạt ca cao làm lễ vật thần thánh và chế biến các thức uống socola thiêng liêng. Do sự khan hiếm của hạt ca cao, việc tiêu thụ chỉ giới hạn ở tầng lớp thượng lưu trong xã hội, với các ghi chép lịch sử cho thấy Hoàng đế Montezuma đã uống tới 50 tách mỗi ngày. Các nhà ngôn ngữ học truy nguyên thuật ngữ 'chocolate' từ từ xocolatl trong tiếng Nahuatl của người Aztec, có nghĩa là 'nước đắng', mặc dù một số học giả cho rằng nó có nguồn gốc kết hợp giữa các yếu tố ngôn ngữ Maya và Nahuatl.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH E -->
+        <div class="passage-paragraph" id="para-E">
+          <span class="paragraph-tag">E</span>
+          <span id="sent-E-1">In 1502, explorer Christopher Columbus introduced cocoa beans to Spain after voyaging to Mesoamerica, and later Spanish explorer Hernán Cortés quickly recognised the potential economic value of chocolate.</span>
+          <span id="sent-E-2">Upon arriving in present-day Mexico in 1519, Cortés observed that chocolate beverages would appeal to the Spanish.</span>
+          <span id="sent-E-3">After conquering the Aztec Empire, Spanish forces exported confiscated cocoa supplies to Spain.</span>
+          <span id="sent-E-4">In response to the growing demand, Spain began cultivating cocoa trees in its American colonies.</span>
+          <span id="sent-E-5">Spanish elite first developed a taste for sweetened chocolate drinks, but the beverage rapidly spread across Europe.</span>
+          <span id="sent-E-6">England, the Netherlands, and France followed suit by establishing cocoa plantations in their own colonies.</span>
+          <span id="sent-E-7">By the 18th century, chocolate remained primarily a luxury restricted to the affluent.</span>
+          <span id="sent-E-8">However, the Industrial Revolution's technologies enabled mechanised production, dramatically reducing costs and making chocolate available to a broader population.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-E')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-E">
+              Năm 1502, nhà thám hiểm Christopher Columbus đã đưa hạt ca cao vào Tây Ban Nha sau chuyến du hành đến Trung Mỹ, và sau đó nhà thám hiểm Tây Ban Nha Hernán Cortés nhanh chóng nhận ra giá trị kinh tế tiềm năng của socola. Khi đến Mexico ngày nay vào năm 1519, Cortés quan sát thấy rằng thức uống socola sẽ hấp dẫn người Tây Ban Nha. Sau khi chinh phục Đế chế Aztec, lực lượng Tây Ban Nha đã xuất khẩu lượng ca cao tịch thu được sang Tây Ban Nha. Để đáp ứng nhu cầu ngày càng tăng, Tây Ban Nha bắt đầu trồng cây ca cao ở các thuộc địa châu Mỹ của mình. Tầng lớp thượng lưu Tây Ban Nha lần đầu tiên phát triển sở thích uống socola ngọt, nhưng thức uống này đã nhanh chóng lan rộng khắp châu Âu. Anh, Hà Lan và Pháp đã làm theo bằng cách thành lập các đồn điền ca cao ở các thuộc địa của chính họ. Đến thế kỷ 18, socola vẫn chủ yếu là một thứ xa xỉ chỉ dành cho những người giàu có. Tuy nhiên, các công nghệ của Cách mạng Công nghiệp đã cho phép sản xuất cơ giới hóa, giảm chi phí đáng kể và làm cho socola có sẵn cho một lượng dân số rộng lớn hơn.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH F -->
+        <div class="passage-paragraph" id="para-F">
+          <span class="paragraph-tag">F</span>
+          <span id="sent-F-1">Cocoa trees are cultivated across multiple countries in Africa, Mesoamerica, and South America, thriving in cool, shaded environments within equatorial zones.</span>
+          <span id="sent-F-2">Despite widespread cultivation, cocoa farming remains labour-intensive, due to the trees' requirement for specific water thresholds, temperature ranges, soil compositions, and protection from environmental threats.</span>
+          <span id="sent-F-3">Approximately five years after planting, cocoa trees begin to yield large, pod-shaped fruits that grow on the trunk.</span>
+          <span id="sent-F-4">These pods contain the beans used in chocolate production.</span>
+          <span id="sent-F-5">While several types of cocoa trees exist, the bulk of the chocolate is produced from the seeds of the most commonly cultivated varieties.</span>
+          <span id="sent-F-6">However, farmers opt to grow more specialised types, such as Criollo or Trinitario, valued for distinctive flavour profiles.</span>
+          <span id="sent-F-7">Unexpectedly, cocoa trees grown on farms are more vulnerable to disease and pests than their wild counterparts.</span>
+          <span id="sent-F-8">Cocoa cultivation presents a strenuous endeavour for farmers, who sell their harvests on futures markets, exposing their incomes to external market fluctuations.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-F')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-F">
+              Cây ca cao được trồng ở nhiều quốc gia ở châu Phi, Trung Mỹ và Nam Mỹ, phát triển mạnh trong môi trường mát mẻ, có bóng râm trong các vùng xích đạo. Mặc dù được trồng rộng rãi, việc canh tác ca cao vẫn đòi hỏi nhiều lao động do cây yêu cầu các ngưỡng nước, phạm vi nhiệt độ, thành phần đất cụ thể và sự bảo vệ khỏi các mối đe dọa môi trường. Khoảng 5 năm sau khi trồng, cây ca cao bắt đầu cho ra những quả lớn hình quả đậu mọc trên thân cây. Những quả này chứa các hạt được sử dụng trong sản xuất socola. Mặc dù có một số loại cây ca cao tồn tại, phần lớn socola được sản xuất từ hạt của các giống được trồng phổ biến nhất. Tuy nhiên, các nông dân lựa chọn trồng các loại chuyên biệt hơn, chẳng hạn như Criollo hoặc Trinitario, được đánh giá cao nhờ hương vị đặc trưng. Một cách bất ngờ, cây ca cao trồng trên các trang trại lại dễ bị sâu bệnh tấn công hơn so với các đồng loại hoang dã của chúng. Việc trồng ca cao đòi hỏi sự nỗ lực vất vả của nông dân, những người bán thu hoạch của mình trên thị trường tương lai, khiến thu nhập của họ phụ thuộc vào những biến động thị trường bên ngoài.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH G -->
+        <div class="passage-paragraph" id="para-G">
+          <span class="paragraph-tag">G</span>
+          <span id="sent-G-1">The process of chocolate production involves a series of steps, carried out in specialised factories where cocoa beans are meticulously processed.</span>
+          <span id="sent-G-2">Workers first sort, clean, and roast the beans before extracting the outer shells, leaving only the inner nibs.</span>
+          <span id="sent-G-3">These nibs are then ground into a dense paste known as chocolate liquor, which is subsequently separated into two components: cocoa solids and cocoa butter.</span>
+          <span id="sent-G-4">Following standardised formulations, chocolate manufacturers blend the chocolate liquor with precise ratios of sugar, milk, and cocoa butter.</span>
+          <span id="sent-G-5">The resulting mixture, often referred to as the 'crumb', undergoes fine grinding to create a smooth consistency.</span>
+          <span id="sent-G-6">Finally, the mixture is then subjected to two additional processes — conching and tempering — before being placed into moulds to create various forms, such as bars or other chocolate products.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-G')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-G">
+              Quy trình sản xuất socola bao gồm một chuỗi các bước, được thực hiện trong các nhà máy chuyên dụng nơi hạt ca cao được chế biến một cách tỉ mỉ. Công nhân trước tiên phân loại, làm sạch và rang hạt trước khi bóc vỏ bên ngoài, chỉ để lại nhân nibs bên trong. Những nhân này sau đó được xay thành một hỗn hợp đặc được gọi là dịch ca cao (chocolate liquor), sau đó được tách thành hai thành phần: ca cao rắn và bơ ca cao. Theo các công thức chuẩn hóa, các nhà sản xuất socola trộn dịch ca cao với tỷ lệ chính xác của đường, sữa và bơ ca cao. Hỗn hợp thu được, thường được gọi là 'crumb', trải qua quá trình nghiền mịn để tạo ra độ sánh mịn. Cuối cùng, hỗn hợp này trải qua hai quy trình bổ sung — đảo trộn (conching) và tôi luyện nhiệt (tempering) — trước khi được đổ vào khuôn để tạo ra nhiều hình dạng khác nhau, chẳng hạn như thanh hoặc các sản phẩm socola khác.
+            </div>
+          </div>
+        </div>
+
+        <!-- PARAGRAPH H -->
+        <div class="passage-paragraph" id="para-H">
+          <span class="paragraph-tag">H</span>
+          <span id="sent-H-1">Chocolate holds significant global economic value, with the manufacturing industry generating over $5 billion annually from cocoa crops, and its reputation remains most prominent in Europe and the United States.</span>
+          <span id="sent-H-2">For instance, US cocoa product imports reached $1.4 billion in 2005.</span>
+          <span id="sent-H-3">On average, Americans consume over five kilogrammes of chocolate per person each year.</span>
+          <span id="sent-H-4">In addition, upscale chocolate boutiques, which offer premium chocolates, have gained significant popularity.</span>
+          <span id="sent-H-5">Many of these shops specialise in artisanal chocolates, crafted with unique flavour profiles.</span>
+          <span id="sent-H-6">Renowned chocolate brands such as Cadbury, Godiva, Lindt, and Ferrero Rocher dominate the market.</span>
+          <span id="sent-H-7">However, the cocoa and chocolate production sectors often face challenges related to fair trade, sustainable development, and environmental preservation.</span>
+          <span id="sent-H-8">These issues are now being actively addressed by industry stakeholders, including officials, activists, and researchers, who are working closely with farmers to promote farming practices that foster sustainability and protect the environment.</span>
+          <div>
+            <button class="trans-toggle-btn" onclick="toggleTrans('trans-H')">Mở dịch đoạn này 🌟</button>
+            <div class="trans-box" id="trans-H">
+              Socola có giá trị kinh tế toàn cầu to lớn, với ngành công nghiệp sản xuất tạo ra hơn 5 tỷ đô la hàng năm từ các vụ mùa ca cao, và danh tiếng của nó vẫn nổi bật nhất ở Châu Âu và Hoa Kỳ. Ví dụ, nhập khẩu sản phẩm ca cao của Mỹ đạt 1,4 tỷ đô la vào năm 2005. Trung bình, người Mỹ tiêu thụ hơn 5 kg socola mỗi người mỗi năm. Ngoài ra, các cửa hàng socola cao cấp, nơi cung cấp socola thượng hạng, đã trở nên vô cùng phổ biến. Nhiều cửa hàng trong số này chuyên về socola thủ công, được chế tác với hương vị độc đáo. Các thương hiệu socola nổi tiếng như Cadbury, Godiva, Lindt và Ferrero Rocher đang thống lĩnh thị trường. Tuy nhiên, các ngành sản xuất ca cao và socola thường phải đối mặt với những thách thức liên quan đến thương mại công bằng, phát triển bền vững và bảo vệ môi trường. Những vấn đề này hiện đang được các bên liên quan trong ngành tích cực giải quyết, bao gồm các quan chức, nhà hoạt động và nhà nghiên cứu, những người đang hợp tác chặt chẽ với nông dân để thúc đẩy các phương pháp canh tác nuôi dưỡng sự bền vững và bảo vệ môi trường.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GLOSSARY CARD -->
+      <div class="card">
+        <h3 style="color: var(--primary-pink-dark); margin-top: 0;">📚 GLOSSARY (BẢNG TỪ VỰNG ACADEMIC B2-C2)</h3>
+        <table class="vocab-table">
+          <thead>
+            <tr>
+              <th>Từ vựng</th>
+              <th>Loại từ</th>
+              <th>Nghĩa tiếng Việt</th>
+              <th>Synonym / Đồng nghĩa trong bài</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ubiquitous</td><td>adj</td><td>Phổ biến ở khắp nơi</td><td>widespread, common</td></tr>
+            <tr><td>Indulgence</td><td>n</td><td>Sự chiều chuộng / Món ăn khoái khẩu</td><td>luxury, treat</td></tr>
+            <tr><td>Commodity</td><td>n</td><td>Hàng hóa</td><td>goods, product</td></tr>
+            <tr><td>Pioneer</td><td>v</td><td>Tiên phong, đi đầu</td><td>develop first, initiate</td></tr>
+            <tr><td>Cultivation</td><td>n</td><td>Sự trồng trọt, canh tác</td><td>farming, growing</td></tr>
+            <tr><td>Domesticated</td><td>adj</td><td>Được thuần hóa, trồng tại nhà</td><td>cultivated, tamed</td></tr>
+            <tr><td>Integral</td><td>adj</td><td>Không thể thiếu</td><td>essential, vital</td></tr>
+            <tr><td>Aristocracy</td><td>n</td><td>Tầng lớp quý tộc</td><td>societal elite, royalty</td></tr>
+            <tr><td>Emblem</td><td>n</td><td>Biểu tượng</td><td>symbol, representation</td></tr>
+            <tr><td>Prestigious</td><td>adj</td><td>Danh giá, uy tín</td><td>reputable, esteemed</td></tr>
+            <tr><td>Scarcity</td><td>n</td><td>Sự khan hiếm</td><td>shortage, rarity</td></tr>
+            <tr><td>Confiscated</td><td>adj/v</td><td>Bị tịch thu</td><td>seized, taken</td></tr>
+            <tr><td>Affluent</td><td>adj</td><td>Giàu có</td><td>wealthy, rich</td></tr>
+            <tr><td>Mechanised</td><td>adj</td><td>Cơ giới hóa</td><td>automated, industrial</td></tr>
+            <tr><td>Labour-intensive</td><td>adj</td><td>Tốn nhiều sức lao động</td><td>requiring hard work</td></tr>
+            <tr><td>Susceptible</td><td>adj</td><td>Dễ bị ảnh hưởng/tổn thương</td><td>vulnerable, at risk</td></tr>
+            <tr><td>Strenuous</td><td>adj</td><td>Vất vả, đòi hỏi nỗ lực</td><td>arduous, demanding</td></tr>
+            <tr><td>Meticulously</td><td>adv</td><td>Tỉ mỉ, cẩn thận</td><td>carefully, precisely</td></tr>
+            <tr><td>Formulation</td><td>n</td><td>Công thức chế tạo</td><td>recipe, blend</td></tr>
+            <tr><td>Prominent</td><td>adj</td><td>Nổi bật, quan trọng</td><td>famous, well-known</td></tr>
+            <tr><td>Artisanal</td><td>adj</td><td>Thủ công chất lượng cao</td><td>handcrafted</td></tr>
+            <tr><td>Stakeholder</td><td>n</td><td>Bên liên quan</td><td>involved party</td></tr>
+            <tr><td>Vulnerable</td><td>adj</td><td>Dễ tổn thương / sâu bệnh</td><td>susceptible, at risk</td></tr>
+            <tr><td>Fluctuation</td><td>n</td><td>Sự biến động</td><td>variation, change</td></tr>
+            <tr><td>Liquor</td><td>n</td><td>Dịch ca cao đặc</td><td>dense paste</td></tr>
+            <tr><td>Tempering</td><td>n</td><td>Quá trình tôi luyện nhiệt</td><td>heat treatment</td></tr>
+            <tr><td>Per capita</td><td>adv/adj</td><td>Theo đầu người</td><td>per person</td></tr>
+            <tr><td>Confectionery</td><td>n</td><td>Bánh kẹo nói chung</td><td>sweets, candy</td></tr>
+            <tr><td>Yield</td><td>v</td><td>Sản xuất, cho ra quả</td><td>produce, bear</td></tr>
+            <tr><td>Threshold</td><td>n</td><td>Ngưỡng giới hạn</td><td>limit, boundary</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANE: EXERCISES -->
+    <div class="pane right-pane" id="rightPane">
+
+      <!-- QUESTION 27-31: MATCHING INFORMATION -->
+      <div class="card">
+        <div class="question-title">Questions 27–31: Matching Information</div>
+        <p style="font-size: 0.9rem; color: #555;">Which paragraph contains the following information? Select A-H.</p>
+
+        <!-- Q27 -->
+        <div style="margin-bottom: 20px;" id="q27-block">
+          <p><strong>27.</strong> the part of cocoa trees used for chocolate production</p>
+          <select class="custom-select" id="q27" onchange="checkMatching(27, 'F')">
+            <option value="">-- Chọn đáp án A-H --</option>
+            <option value="A">Paragraph A</option>
+            <option value="B">Paragraph B</option>
+            <option value="C">Paragraph C</option>
+            <option value="D">Paragraph D</option>
+            <option value="E">Paragraph E</option>
+            <option value="F">Paragraph F</option>
+            <option value="G">Paragraph G</option>
+            <option value="H">Paragraph H</option>
+          </select>
+          <div class="explanation-box" id="exp-27">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> F</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph F (Câu 3, 4)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Khoảng 5 năm sau khi trồng, cây ca cao bắt đầu cho ra những quả lớn hình quả đậu mọc trên thân cây. Những quả này chứa các hạt được sử dụng trong sản xuất socola.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> part of cocoa trees = pods contain the beans</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-F-4')">📍 Vị trí dẫn chứng trong bài (Đoạn F)</button>
+          </div>
+        </div>
+
+        <!-- Q28 -->
+        <div style="margin-bottom: 20px;" id="q28-block">
+          <p><strong>28.</strong> annual chocolate consumption per capita in the United States</p>
+          <select class="custom-select" id="q28" onchange="checkMatching(28, 'H')">
+            <option value="">-- Chọn đáp án A-H --</option>
+            <option value="A">Paragraph A</option>
+            <option value="B">Paragraph B</option>
+            <option value="C">Paragraph C</option>
+            <option value="D">Paragraph D</option>
+            <option value="E">Paragraph E</option>
+            <option value="F">Paragraph F</option>
+            <option value="G">Paragraph G</option>
+            <option value="H">Paragraph H</option>
+          </select>
+          <div class="explanation-box" id="exp-28">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> H</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph H (Câu 3)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Trung bình, người Mỹ tiêu thụ hơn 5 kg socola mỗi người mỗi năm.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> annual = each year | per capita = per person | consumption = consume</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-H-3')">📍 Vị trí dẫn chứng trong bài (Đoạn H)</button>
+          </div>
+        </div>
+
+        <!-- Q29 -->
+        <div style="margin-bottom: 20px;" id="q29-block">
+          <p><strong>29.</strong> the higher likelihood of cultivated cocoa trees being attacked by insects</p>
+          <select class="custom-select" id="q29" onchange="checkMatching(29, 'F')">
+            <option value="">-- Chọn đáp án A-H --</option>
+            <option value="A">Paragraph A</option>
+            <option value="B">Paragraph B</option>
+            <option value="C">Paragraph C</option>
+            <option value="D">Paragraph D</option>
+            <option value="E">Paragraph E</option>
+            <option value="F">Paragraph F</option>
+            <option value="G">Paragraph G</option>
+            <option value="H">Paragraph H</option>
+          </select>
+          <div class="explanation-box" id="exp-29">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> F</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph F (Câu 7)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Một cách bất ngờ, cây ca cao trồng trên các trang trại lại dễ bị sâu bệnh tấn công hơn so với các đồng loại hoang dã của chúng.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> higher likelihood / being attacked = more vulnerable to disease and pests | cultivated = grown on farms</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-F-7')">📍 Vị trí dẫn chứng trong bài (Đoạn F)</button>
+          </div>
+        </div>
+
+        <!-- Q30 -->
+        <div style="margin-bottom: 20px;" id="q30-block">
+          <p><strong>30.</strong> a community which developed a preference for sweetened chocolate beverages</p>
+          <select class="custom-select" id="q30" onchange="checkMatching(30, 'E')">
+            <option value="">-- Chọn đáp án A-H --</option>
+            <option value="A">Paragraph A</option>
+            <option value="B">Paragraph B</option>
+            <option value="C">Paragraph C</option>
+            <option value="D">Paragraph D</option>
+            <option value="E">Paragraph E</option>
+            <option value="F">Paragraph F</option>
+            <option value="G">Paragraph G</option>
+            <option value="H">Paragraph H</option>
+          </select>
+          <div class="explanation-box" id="exp-30">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> E</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph E (Câu 5)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Tầng lớp thượng lưu Tây Ban Nha lần đầu tiên phát triển sở thích uống socola ngọt, nhưng thức uống này đã nhanh chóng lan rộng khắp châu Âu.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> community = Spanish elite | developed a preference = developed a taste for</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-E-5')">📍 Vị trí dẫn chứng trong bài (Đoạn E)</button>
+          </div>
+        </div>
+
+        <!-- Q31 -->
+        <div style="margin-bottom: 20px;" id="q31-block">
+          <p><strong>31.</strong> an approach by which ancient Mexicans could acquire cocoa beans</p>
+          <select class="custom-select" id="q31" onchange="checkMatching(31, 'D')">
+            <option value="">-- Chọn đáp án A-H --</option>
+            <option value="A">Paragraph A</option>
+            <option value="B">Paragraph B</option>
+            <option value="C">Paragraph C</option>
+            <option value="D">Paragraph D</option>
+            <option value="E">Paragraph E</option>
+            <option value="F">Paragraph F</option>
+            <option value="G">Paragraph G</option>
+            <option value="H">Paragraph H</option>
+          </select>
+          <div class="explanation-box" id="exp-31">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> D</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph D (Câu 2)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Do đó, họ tìm kiếm hạt ca cao thông qua các mạng lưới thương mại rộng lớn, thậm chí sử dụng chúng làm tiền tệ để nộp thuế.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> approach = trade networks | acquire = sourced</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-D-2')">📍 Vị trí dẫn chứng trong bài (Đoạn D)</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QUESTION 32-36: TRUE / FALSE / NOT GIVEN -->
+      <div class="card">
+        <div class="question-title">Questions 32–36: True / False / Not Given</div>
+
+        <!-- Q32 -->
+        <div style="margin-bottom: 20px;" id="q32-block">
+          <p><strong>32.</strong> The Mayan ruling class forbade the use of cocoa and chocolate in rituals.</p>
+          <select class="custom-select" id="q32" onchange="checkTFNG(32, 'FALSE')">
+            <option value="">-- Chọn TRUE / FALSE / NOT GIVEN --</option>
+            <option value="TRUE">TRUE</option>
+            <option value="FALSE">FALSE</option>
+            <option value="NOT GIVEN">NOT GIVEN</option>
+          </select>
+          <div class="explanation-box" id="exp-32">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> FALSE</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph C (Câu 2)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Trong khi tầng lớp quý tộc, đặc biệt là các gia đình hoàng gia, thưởng thức socola trong các nghi lễ cầu kỳ...</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> Bài đọc ghi họ tiêu thụ trong các nghi lễ (consumed during elaborate ceremonies), trái ngược hoàn toàn với việc "cấm" (forbade).</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-C-2')">📍 Vị trí dẫn chứng trong bài (Đoạn C)</button>
+          </div>
+        </div>
+
+        <!-- Q33 -->
+        <div style="margin-bottom: 20px;" id="q33-block">
+          <p><strong>33.</strong> The Spanish explorer Hernán Cortés had made an investment in chocolate and chocolate beverages.</p>
+          <select class="custom-select" id="q33" onchange="checkTFNG(33, 'NOT GIVEN')">
+            <option value="">-- Chọn TRUE / FALSE / NOT GIVEN --</option>
+            <option value="TRUE">TRUE</option>
+            <option value="FALSE">FALSE</option>
+            <option value="NOT GIVEN">NOT GIVEN</option>
+          </select>
+          <div class="explanation-box" id="exp-33">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> NOT GIVEN</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph E (Câu 1, 2)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Cortés nhận ra giá trị kinh tế tiềm năng và quan sát thấy đồ uống socola sẽ hấp dẫn người Tây Ban Nha.</div>
+            <div class="exp-item"><strong>4. GIẢI THÍCH:</strong> Bài đọc chỉ nói ông nhận ra tiềm năng kinh tế chứ không đề cập đến việc ông có trực tiếp "đầu tư" (made an investment) tiền bạc vào đó hay không.</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-E-1')">📍 Vị trí dẫn chứng trong bài (Đoạn E)</button>
+          </div>
+        </div>
+
+        <!-- Q34 -->
+        <div style="margin-bottom: 20px;" id="q34-block">
+          <p><strong>34.</strong> Wild cocoa trees are more susceptible to infectious diseases than cultivated ones.</p>
+          <select class="custom-select" id="q34" onchange="checkTFNG(34, 'FALSE')">
+            <option value="">-- Chọn TRUE / FALSE / NOT GIVEN --</option>
+            <option value="TRUE">TRUE</option>
+            <option value="FALSE">FALSE</option>
+            <option value="NOT GIVEN">NOT GIVEN</option>
+          </select>
+          <div class="explanation-box" id="exp-34">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> FALSE</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph F (Câu 7)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Một cách bất ngờ, cây ca cao trồng trên các trang trại (cultivated) lại dễ bị sâu bệnh tấn công hơn so với các đồng loại hoang dã (wild counterparts) của chúng.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> Đề bài nói cây hoang dã dễ bị bệnh hơn, nhưng trong bài khẳng định cây trồng nông trại (cultivated) mới là đối tượng dễ bị sâu bệnh hơn.</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-F-7')">📍 Vị trí dẫn chứng trong bài (Đoạn F)</button>
+          </div>
+        </div>
+
+        <!-- Q35 -->
+        <div style="margin-bottom: 20px;" id="q35-block">
+          <p><strong>35.</strong> During chocolate production, some of the seeds are discarded.</p>
+          <select class="custom-select" id="q35" onchange="checkTFNG(35, 'NOT GIVEN')">
+            <option value="">-- Chọn TRUE / FALSE / NOT GIVEN --</option>
+            <option value="TRUE">TRUE</option>
+            <option value="FALSE">FALSE</option>
+            <option value="NOT GIVEN">NOT GIVEN</option>
+          </select>
+          <div class="explanation-box" id="exp-35">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> NOT GIVEN</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph G (Câu 2)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Công nhân trước tiên phân loại, làm sạch và rang hạt trước khi bóc vỏ bên ngoài, chỉ để lại nhân nibs bên trong.</div>
+            <div class="exp-item"><strong>4. GIẢI THÍCH:</strong> Bài đọc đề cập đến việc bỏ vỏ (outer shells), nhưng không đề cập việc có vứt bỏ bớt hạt (seeds) nào không.</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-G-2')">📍 Vị trí dẫn chứng trong bài (Đoạn G)</button>
+          </div>
+        </div>
+
+        <!-- Q36 -->
+        <div style="margin-bottom: 20px;" id="q36-block">
+          <p><strong>36.</strong> Chocolate enjoys more prestige in Europe and the United States than in any other country.</p>
+          <select class="custom-select" id="q36" onchange="checkTFNG(36, 'NOT GIVEN')">
+            <option value="">-- Chọn TRUE / FALSE / NOT GIVEN --</option>
+            <option value="TRUE">TRUE</option>
+            <option value="FALSE">FALSE</option>
+            <option value="NOT GIVEN">NOT GIVEN</option>
+          </select>
+          <div class="explanation-box" id="exp-36">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> NOT GIVEN</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph H (Câu 1)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> ...và danh tiếng của nó vẫn nổi bật nhất ở Châu Âu và Hoa Kỳ.</div>
+            <div class="exp-item"><strong>4. GIẢI THÍCH:</strong> Bài đọc dùng từ "most prominent", nhưng không có so sánh hơn nhất về mức độ "prestige" (danh giá) so với TẤT CẢ các quốc gia khác trên thế giới.</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-H-1')">📍 Vị trí dẫn chứng trong bài (Đoạn H)</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QUESTION 37-40: FLOW-CHART COMPLETION -->
+      <div class="card">
+        <div class="question-title">Questions 37–40: Complete the Flow-Chart</div>
+        <p style="font-size: 0.88rem; color: #d63031; font-weight: 800;">Write NO MORE THAN TWO WORDS from the passage for each answer.</p>
+
+        <!-- Q37 -->
+        <div style="margin-bottom: 20px;" id="q37-block">
+          <p><strong>37.</strong> Seeds -> classifying, cleaning, and roasting -> stripping their <input type="text" class="fill-input" id="q37"> <button class="check-btn" onclick="checkFillBlank(37, ['outer shells', 'shells'])">Check</button></p>
+          <div class="explanation-box" id="exp-37">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> outer shells (hoặc shells)</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph G (Câu 2)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Công nhân trước tiên phân loại, làm sạch và rang hạt trước khi bóc vỏ bên ngoài (extracting the outer shells), chỉ để lại nhân nibs bên trong.</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> stripping = extracting</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-G-2')">📍 Vị trí dẫn chứng trong bài (Đoạn G)</button>
+          </div>
+        </div>
+
+        <!-- Q38 -->
+        <div style="margin-bottom: 20px;" id="q38-block">
+          <p><strong>38.</strong> Nibs -> Crushing -> producing <input type="text" class="fill-input" id="q38"> <button class="check-btn" onclick="checkFillBlank(38, ['chocolate liquor'])">Check</button></p>
+          <div class="explanation-box" id="exp-38">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> chocolate liquor</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph G (Câu 3)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Những nhân này sau đó được xay thành một hỗn hợp đặc được gọi là dịch ca cao (chocolate liquor)...</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> Crushing = ground into</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-G-3')">📍 Vị trí dẫn chứng trong bài (Đoạn G)</button>
+          </div>
+        </div>
+
+        <!-- Q39 -->
+        <div style="margin-bottom: 20px;" id="q39-block">
+          <p><strong>39.</strong> mixing with measured quantities of substances such as sweeteners, liquid dairy, and <input type="text" class="fill-input" id="q39"> <button class="check-btn" onclick="checkFillBlank(39, ['cocoa butter'])">Check</button></p>
+          <div class="explanation-box" id="exp-39">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> cocoa butter</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph G (Câu 4)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> ...trộn dịch ca cao với tỷ lệ chính xác của đường (sugar), sữa (milk) và bơ ca cao (cocoa butter).</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> sweeteners = sugar | liquid dairy = milk | measured quantities = precise ratios</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-G-4')">📍 Vị trí dẫn chứng trong bài (Đoạn G)</button>
+          </div>
+        </div>
+
+        <!-- Q40 -->
+        <div style="margin-bottom: 20px;" id="q40-block">
+          <p><strong>40.</strong> Crumb blending -> crushing finely to obtain a smooth texture manufacturing diverse shapes of chocolate in <input type="text" class="fill-input" id="q40"> <button class="check-btn" onclick="checkFillBlank(40, ['moulds', 'molds'])">Check</button></p>
+          <div class="explanation-box" id="exp-40">
+            <div class="exp-item"><strong>1. ĐÁP ÁN:</strong> moulds (hoặc molds)</div>
+            <div class="exp-item"><strong>2. ĐOẠN CHỨA ĐÁP ÁN:</strong> Paragraph G (Câu 6)</div>
+            <div class="exp-item"><strong>3. DỊCH NGHĨA:</strong> Cuối cùng, hỗn hợp này trải qua hai quy trình bổ sung... trước khi được đổ vào khuôn (moulds) để tạo ra nhiều hình dạng khác nhau...</div>
+            <div class="exp-item"><strong>4. CỤM TỪ ĐỒNG NGHĨA:</strong> diverse shapes = various forms | placed into = in</div>
+            <button class="locate-btn" onclick="scrollToSentence('sent-G-6')">📍 Vị trí dẫn chứng trong bài (Đoạn G)</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <div class="submit-container">
+        <button class="submit-btn" onclick="submitExam()">NỘP BÀI KẾT QUẢ 🏆</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RESULT MODAL -->
+  <div class="modal-overlay" id="resultModal">
+    <div class="modal-card">
+      <h2 style="color: var(--primary-pink-dark); margin: 0;">🎉 KẾT QUẢ BÀI THI 🎉</h2>
+      <div class="modal-score" id="scoreText">0/14</div>
+      <p id="feedbackText" style="font-size: 1.1rem; font-weight: 700; color: #444; line-height: 1.5;"></p>
+      <button class="close-modal-btn" onclick="closeModal()">Đóng & Xem Lại Bài</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // WEB AUDIO API SOUNDS
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playDing() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+      osc.frequency.exponentialRampToValueAtTime(1046.50, audioCtx.currentTime + 0.3); // C6
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.3);
+    }
+
+    function playWrong() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+      osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.4);
+    }
+
+    // STATE TRACKING
+    const totalQuestions = 14;
+    let answeredSet = new Set();
+    let userAnswers = {};
+    const correctAnswers = {
+      27: "F", 28: "H", 29: "F", 30: "E", 31: "D",
+      32: "FALSE", 33: "NOT GIVEN", 34: "FALSE", 35: "NOT GIVEN", 36: "NOT GIVEN",
+      37: ["outer shells", "shells"],
+      38: ["chocolate liquor"],
+      39: ["cocoa butter"],
+      40: ["moulds", "molds"]
+    };
+
+    function updateProgress(qNum) {
+      answeredSet.add(qNum);
+      const count = answeredSet.size;
+      const pct = (count / totalQuestions) * 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').innerText = count + ' / ' + totalQuestions + ' Đã làm';
+    }
+
+    // TOGGLE TRANSLATION
+    function toggleTrans(id) {
+      const el = document.getElementById(id);
+      if (el.style.display === 'block') {
+        el.style.display = 'none';
+      } else {
+        el.style.display = 'block';
+      }
+    }
+
+    // SCROLL TO SPECIFIC SENTENCE DẪN CHỨNG
+    function scrollToSentence(sentId) {
+      const sentEl = document.getElementById(sentId);
+      if (sentEl) {
+        sentEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Highlight effect
+        sentEl.classList.add('sentence-target');
+        setTimeout(() => {
+          sentEl.classList.remove('sentence-target');
+        }, 3000);
+      }
+    }
+
+    // MATCHING & TFNG CHECK
+    function checkMatching(qNum, correctVal) {
+      const selectEl = document.getElementById('q' + qNum);
+      const expBox = document.getElementById('exp-' + qNum);
+      const val = selectEl.value;
+
+      if (!val) return;
+
+      userAnswers[qNum] = val;
+      updateProgress(qNum);
+
+      expBox.style.display = 'block';
+
+      if (val === correctVal) {
+        playDing();
+        selectEl.style.borderColor = 'var(--accent-green)';
+        selectEl.style.backgroundColor = '#e6fffa';
+      } else {
+        playWrong();
+        selectEl.style.borderColor = 'var(--accent-red)';
+        selectEl.style.backgroundColor = '#ffe3e3';
+      }
+    }
+
+    function checkTFNG(qNum, correctVal) {
+      checkMatching(qNum, correctVal);
+    }
+
+    // FILL IN BLANK CHECK
+    function checkFillBlank(qNum, validList) {
+      const inputEl = document.getElementById('q' + qNum);
+      const expBox = document.getElementById('exp-' + qNum);
+      const userVal = inputEl.value.trim().toLowerCase();
+
+      if (!userVal) return;
+
+      userAnswers[qNum] = userVal;
+      updateProgress(qNum);
+
+      expBox.style.display = 'block';
+
+      const isCorrect = validList.some(ans => ans.toLowerCase() === userVal);
+
+      if (isCorrect) {
+        playDing();
+        inputEl.style.borderColor = 'var(--accent-green)';
+        inputEl.style.backgroundColor = '#e6fffa';
+      } else {
+        playWrong();
+        inputEl.style.borderColor = 'var(--accent-red)';
+        inputEl.style.backgroundColor = '#ffe3e3';
+      }
+    }
+
+    // TIMER LOGIC
+    let timerSeconds = 20 * 60;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function toggleTimer() {
+      const btn = document.getElementById('startTimerBtn');
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        btn.innerText = 'TIẾP TỤC';
+      } else {
+        isTimerRunning = true;
+        btn.innerText = 'TẠM DỪNG';
+        timerInterval = setInterval(() => {
+          if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            alert("⏰ Đã hết giờ làm bài! Bạn vẫn có thể tiếp tục hoàn thành, nhưng nhớ là trong phòng thi thật chỉ làm một passage trong 20 phút thôi nhé!");
+            btn.innerText = 'HẾT GIỜ';
+            return;
+          }
+          timerSeconds--;
+          const mins = Math.floor(timerSeconds / 60);
+          const secs = timerSeconds % 60;
+          document.getElementById('timer').innerText = 
+            (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }, 1000);
+      }
+    }
+
+    // SUBMIT & SCORE CALCULATION
+    function submitExam() {
+      let score = 0;
+
+      // Q27-31
+      for (let i = 27; i <= 31; i++) {
+        if (userAnswers[i] === correctAnswers[i]) score++;
+      }
+      // Q32-36
+      for (let i = 32; i <= 36; i++) {
+        if (userAnswers[i] === correctAnswers[i]) score++;
+      }
+      // Q37-40
+      for (let i = 37; i <= 40; i++) {
+        const uVal = (userAnswers[i] || '').toLowerCase();
+        if (correctAnswers[i].some(ans => ans.toLowerCase() === uVal)) score++;
+      }
+
+      document.getElementById('scoreText').innerText = score + ' / 14';
+
+      let feedback = '';
+      if (score === 14) {
+        feedback = "🌟 THIÊN TÀI READING! Bạn trả lời xuất sắc 100% không sai câu nào! Mức điểm Band 9.0 tuyệt đối!";
+      } else if (score >= 10) {
+        feedback = "🎉 LÀM TỐT LẮM! Kiến thức từ vựng và kỹ năng Skim/Scan của bạn rất vững vàng! Đạt chuẩn Band 7.5+!";
+      } else if (score >= 6) {
+        feedback = "💪 CỐ LÊN NHÉ! Bạn đã làm khá tốt. Hãy xem lại phần giải thích chi tiết bên dưới các câu sai để rút kinh nghiệm nhé!";
+      } else {
+        feedback = "📚 HÃY CỐ GẮNG HƠN! Đừng nản lòng nhé, bôi đen từ vựng để đọc bảng Glossary và học kỹ các cụm Từ Đồng Nghĩa nha!";
+      }
+
+      document.getElementById('feedbackText').innerText = feedback;
+      document.getElementById('resultModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('resultModal').style.display = 'none';
+    }
+
+    // HIGHLIGHT SELECTION FEATURE
+    document.addEventListener('mouseup', function() {
+      const selection = window.getSelection();
+      if (!selection.isCollapsed) {
+        const range = selection.getRangeAt(0);
+        const selectedText = selection.toString().trim();
+
+        if (selectedText.length > 0) {
+          const span = document.createElement('span');
+          span.className = 'highlight-yellow';
+          span.appendChild(range.extractContents());
+          range.insertNode(span);
+          selection.removeAllRanges();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
